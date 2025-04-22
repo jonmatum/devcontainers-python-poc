@@ -22,8 +22,8 @@ coverage = "*"
 
 [scripts]
 dev = "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
-test = "env PYTHONPATH=. && pytest"
+test = "pytest"
 format = "black ."
-lint = "isort . && black --check . && mypy app"
-coverage = "coverage run -m pytest && coverage report -m"
-coverage-html = "coverage run -m pytest && coverage html"
+lint = "sh -c 'env PYTHONPATH=. isort . && env PYTHONPATH=. black --check . && env PYTHONPATH=. mypy app'"
+coverage = "sh -c 'env PYTHONPATH=. coverage run -m pytest && coverage report -m'"
+coverage-html = "sh -c 'env PYTHONPATH=. coverage run -m pytest && coverage html'"
