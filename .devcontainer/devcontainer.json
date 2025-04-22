@@ -1,0 +1,24 @@
+{
+    "name": "Python FastAPI Lambda Dev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.pythonPath": "/workspace/.venv/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "postCreateCommand": "pipenv --python /usr/local/bin/python install --dev",
+    "forwardPorts": [
+        8000
+    ],
+    "remoteUser": "root"
+}

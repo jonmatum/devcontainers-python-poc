@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[requires]
+python_version = "3.12"
+
+[packages]
+fastapi = "*"
+uvicorn = { extras = ["standard"] }
+mangum = "*"
+boto3 = "*"
+
+[dev-packages]
+pytest = "*"
+black = "*"
+isort = "*"
+mypy = "*"
+httpx = "*"
+coverage = "*"
+
+[scripts]
+dev = "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
+test = "env PYTHONPATH=. && pytest"
+format = "black ."
+lint = "isort . && black --check . && mypy app"
+coverage = "coverage run -m pytest && coverage report -m"
+coverage-html = "coverage run -m pytest && coverage html"
